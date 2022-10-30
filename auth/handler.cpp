@@ -5,6 +5,7 @@
 #include <fstream>
 using namespace std;
 
+//this password input function has been copied from https://www.geeksforgeeks.org/taking-password-as-input-in-c
 enum TT_Input {
 
 	// ASCII code of backspace is 8
@@ -12,6 +13,7 @@ enum TT_Input {
 	RETURN = 32
 };
 
+//this password input function has been copied from https://www.geeksforgeeks.org/taking-password-as-input-in-c
 std::string takePasswdFromUser()
 {
 	string ipt = "";

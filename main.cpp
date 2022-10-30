@@ -1,14 +1,21 @@
 #include <iostream>
-#include <fstream>
 #include <string>
+#include <stdio.h>
 #include "utility/constants.h"
+// #include <format>
 using namespace std;
 
 int main()
 {
-    string menu;
-    ifstream in("database/login_screen.txt");
-    in>>menu;
-    cout << menu;
+    FILE* fptr;
+    fptr = fopen("database/login_screen.txt", "r");
+    if (fptr == NULL)
+    {
+        cout<<"Error! Some files are corrupted please reinstall the program again!"<<endl;
+        cout<<"Quitting the program!"<<endl;
+        exit(1);
+    }
+    // std:format("hey {}", "there");
+
     return 0;
 }
