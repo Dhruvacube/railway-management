@@ -6,6 +6,7 @@
 #include "fmt/core.h"
 #include "fmt/color.h"
 #include "utility/utility.h"
+#include "fmt/format.h"
 
 int main()
 {
@@ -26,6 +27,7 @@ int main()
         menu_display+=(temp_menu_display+"\n");
     }
     menu.close();
+    menu_display=fmt::format(menu_display,name);
     while(true){
         int choice = -1;
         system("CLS");
