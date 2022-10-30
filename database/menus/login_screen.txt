@@ -1,0 +1,8 @@
+Welcome to {}
+
+1. Admin Login
+2. Customer Login
+3. Customer User Creation
+4. Exit
+
+Please enter a choice from 1-4 below:

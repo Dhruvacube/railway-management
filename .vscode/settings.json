@@ -4,6 +4,11 @@
         "xstring": "cpp",
         "format": "cpp",
         "fstream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "chrono": "cpp",
+        "filesystem": "cpp",
+        "iosfwd": "cpp",
+        "xiosbase": "cpp",
+        "ostream": "cpp"
     }
 }

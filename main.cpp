@@ -1,21 +1,53 @@
+#define FMT_HEADER_ONLY
 #include <iostream>
+#include <fstream>
 #include <string>
-#include <stdio.h>
 #include "utility/constants.h"
-// #include <format>
-using namespace std;
+#include "fmt/core.h"
+#include "fmt/color.h"
+#include "utility/utility.h"
 
 int main()
 {
-    FILE* fptr;
-    fptr = fopen("database/login_screen.txt", "r");
-    if (fptr == NULL)
+    string file;
+    ifstream menu;
+    menu.open("database/menus/login_screen.txt");
+    if (!menu)
     {
-        cout<<"Error! Some files are corrupted please reinstall the program again!"<<endl;
-        cout<<"Quitting the program!"<<endl;
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"Error! Some files are corrupted please reinstall the program again!\n");
+        fmt::print(fg(fmt::color::red),"Quitting the program!\n");
         exit(1);
     }
-    // std:format("hey {}", "there");
+    string menu_display;
+    while (menu.eof()==0)
+    {   
+        register string temp_menu_display;
+        getline(menu,temp_menu_display);
+        menu_display+=(temp_menu_display+"\n");
+    }
+    menu.close();
+    while(true){
+        int choice = -1;
+        system("CLS");
+        cout<<flush<<menu_display;
+        cin>>choice;
+        cout<<choice<<"hey";
+        if (choice==1){
+            cout<<"hey";
+        }else if (choice==2){
+            cout<<"hey";
+        }else if (choice==3){
+            /* code */
+        }else if (choice==4){
+            system("PAUSE");
+            system("CLS");
+            exit(1);  
+        }else if (choice != -1){
+            fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nPlease select a valid option from the above menu!\n");
+            sleepcp(2000);
+            system("CLS");
+        }
+    };
 
     return 0;
 }
