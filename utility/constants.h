@@ -1,8 +1,9 @@
-#include <string>
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 #include <map>
+#include <string>
 
-//hashing
-const std::string salt = "5213761a294a36227cd81dcc06d446b6"; //It could be anything, it will be helpful in decoding the password stored in the database
+using namespace std;
 
 // seating layout in the trains
 const int ac1_seats = 24;
@@ -24,10 +25,6 @@ std::map<char, int> seating = {
     { 'GN', general_seats }
 };
 
-int get_seat_count(char seat_class) {
-    if (seating.find(toupper(seat_class)) != seating.end()) {
-        return seating[toupper(seat_class)];
-    }else{
-        return 0;
-    }
-}
+const string login_screen_path = "../database/login_screen.txt";
+
+#endif
