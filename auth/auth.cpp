@@ -1,12 +1,20 @@
 #include <string>
-#include <../constants.cpp>
+#include <algorithm>
+
 using namespace std;
 
-class MD5Hashing {
+extern const string salt;
+
+static class MD5Hashing {
+    string salt;
     public:
-        string salt = "5213761a294a36227cd81dcc06d446b6";
+        MD5Hashing(string salt)
+        {
+            this->salt = salt;
+        }
+
         string hash(string password) {
             string salted_password = password + salt;
-            return md5(salted_password);
+            return ;
         }
 };
