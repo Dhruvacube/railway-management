@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Name of the railway management app
 const string name = "Indian Rail Transport Corporation (IRCTC) Ltd.";
 
 // seating layout in the trains
