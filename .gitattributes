@@ -1,0 +1,5 @@
+*.c eol=crlf
+fmt/* linguist-vendored
+auth/hash/* linguist-vendored
+.vscode/* linguist-vendored
+.vscode/* export-ignore
