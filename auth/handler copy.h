@@ -72,9 +72,14 @@ class Handler {
             data.open("../../database/user/data.csv");
             string headers;
             getline(data,headers);
-            string *headers_list;
-            headers_list = split(headers, ','); 
-            cout<<headers_list<<endl;
+            string headers_list[7];
+            int n=0;
+            for (int i = 0; i < headers.size(); i++){
+                if (headers[i] == ','){
+                    headers_list[n] = headers.substr(n,i);
+                    n+=1;
+                }
+            }
             data.close();
             // string name; int ph_no; string address; string emailid; string username; string password; bool admin;
             // while(in.read_row(name,ph_no,address,emailid,username,password,admin)){

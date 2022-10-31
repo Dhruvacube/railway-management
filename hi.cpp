@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iostream>
 #include <sstream>
+#include<array> 
+
 
 using namespace std;
 
@@ -23,9 +25,17 @@ int main(){
     data.open("database/user/data.csv");
     string headers;
     getline(data,headers);
-    string *headers_list;
-    headers_list = split(headers, ','); 
-    cout<<headers_list[1]<<endl;
+    string headers_list[7];
+    int n=0;
+    for (int i = 0; i < headers.size(); i++){
+        if (headers[i] == ','){
+            headers_list[n] = headers.substr(n,i);
+            cout<<n<<","<<i<<","<<headers.substr(n,i)<<endl;
+            n=i;
+        }
+    }
     data.close();
+    cout<<"hey";
+    cout<<sizeof(headers_list)<<endl;
     return 0;
 }
