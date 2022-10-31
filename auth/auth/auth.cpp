@@ -2,7 +2,7 @@
 #include <string>
 #include <algorithm>
 #include "hash/sha256.h"
-#include "utility/constants.h"
+#include "../../utility/constants.h"
 
 using namespace std;
 
