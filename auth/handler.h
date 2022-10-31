@@ -6,7 +6,9 @@
 #include <fstream>
 #include <iostream>
 #include "../utility/constants.h"
+#include "../utility/fmt/core.h"
 #include <sstream>
+#include <vector>
 
 //this password input function has been copied from https://www.geeksforgeeks.org/taking-password-as-input-in-c
 enum TT_Input {
@@ -69,37 +71,34 @@ class Handler {
         };
         bool user_login(string user_name, string pass_word, login_type login_type_t){
             ifstream data;
-            data.open("../../database/user/data.csv");
-            string headers;
-            getline(data,headers);
-            string headers_list[7];
-            int n=0;
-            for (int i = 0; i < headers.size(); i++){
-                if (headers[i] == ','){
-                    headers_list[n] = headers.substr(n,i);
-                    n+=1;
-                }
-            }
+            data.open("../../database/user/data.txt");
+            string name,address,emailid,username,password;
+            int ph_no;
+            bool admin;
+            while (data >> name >> ph_no >> address >> emailid >> username >> password >> admin) {
+                cout<<"hey "<<name<<" "<<address<<" "<<emailid;
+                if (username == user_name && password == pass_word) {
+                    if (login_type_t == login_type::admin) {
+                        if (admin) {
+                            data.close();
+                            return true;
+                        } else {
+                            data.close();
+                            return false;
+                        }
+                    } else if (login_type_t == login_type::user) {
+                        if (admin) {
+                            data.close();
+                            return false;                            
+                        } else {
+                            data.close();
+                            return true;
+                        };
+                    };
+                };};
+
             data.close();
-            // string name; int ph_no; string address; string emailid; string username; string password; bool admin;
-            // while(in.read_row(name,ph_no,address,emailid,username,password,admin)){
-            //     if (username == user_name && password == pass_word) {
-            //         if (login_type_t == login_type::admin) {
-            //             if (admin) {
-            //                 return true;
-            //             } else {
-            //                 return false;
-            //             }
-            //         } else if (login_type_t == login_type::user) {
-            //             if (admin) {
-            //                 return false;
-            //             } else {
-            //                 return true;
-            //             };
-            //         };
-            //     };
-            // };
-                return false;
+            return false;
         };
         void handle(login_type login_type_t) {
             string username;
@@ -110,17 +109,21 @@ class Handler {
             password = HANDLER_H::takePasswdFromUser();
             if (login_type_t == login_type::admin) {
                 if (this->user_login(username, password, login_type_t)) {
-                    cout << "You have successfully logged in as admin!" << endl;
+                    fmt::print(fmt::emphasis::bold ,"\nYou have successfully logged in as admin!\n");
+                    system("PAUSE");
             } else {
-                cout << "You have entered wrong credentials!" << endl;
+                fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"\nYou have entered wrong credentials or something is wrong or the user doesn't exists!\n");
+                system("PAUSE");
             };
             } else if (login_type_t == login_type::user) {
                 if (this->user_login(username, password, login_type_t)) {
-                    cout << "You have successfully logged in as user!" << endl;
+                    fmt::print(fmt::emphasis::bold ,"\nYou have successfully logged in as user!\n");
                 } else {
-                    cout << "You have entered wrong credentials!" << endl;
+                    fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"\nYou have entered wrong credentials or something is wrong or the user doesn't exists!\n");
+                    system("PAUSE");
                 };
             };
+            system("PAUSE");
         };
 };
 
