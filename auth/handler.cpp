@@ -55,7 +55,25 @@ class Handler {
         }
 
         void handle(login_type login_type_t) {
-            this->auth.login("username", "password");
+            string username;
+			string password;
+			cout << "Enter the username: "<<endl;
+			cin >> username;
+			cout << "Enter the password: "<<endl;
+			password = takePasswdFromUser();
+			if (login_type_t == login_type::admin) {
+				if (this->auth.admin_login(username, password)) {
+					cout << "You have successfully logged in as admin!" << endl;
+				} else {
+					cout << "You have entered wrong credentials!" << endl;
+				}
+			} else if (login_type_t == login_type::user) {
+				if (this->auth.user_login(username, password)) {
+					cout << "You have successfully logged in as user!" << endl;
+				} else {
+					cout << "You have entered wrong credentials!" << endl;
+				}
+			}
         }
 
 

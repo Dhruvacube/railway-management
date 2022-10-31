@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include "hash/sha256.h"
+#include "utility/constants.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class SHA256Hashing {
         }
 };
 
-bool Auth::login(string username, string password) {
+bool Auth::login(string username, string password, login_type login_type_t) {
     SHA256Hashing hashing;
     string hashed_password = hashing.hash(password);
 }
