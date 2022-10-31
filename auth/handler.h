@@ -64,7 +64,6 @@ class Handler {
             int ph_no;
             bool admin;
             while (data >> name >> ph_no >> address >> emailid >> username >> password >> admin) {
-                cout<<"hey "<<name<<" "<<address<<" "<<emailid;
                 if (username == user_name && password == pass_word) {
                     if (login_type_t == login_type::admin) {
                         if (admin) {
