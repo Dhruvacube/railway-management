@@ -28,4 +28,16 @@ std::map<string, int> seating = {
     { "GN", general_seats }
 };
 
+enum login_type
+{
+    admin,
+    user
+};
+
+enum user_type
+{
+    admin_user,
+    normal_user
+};
+
 #endif
