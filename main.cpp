@@ -3,10 +3,10 @@
 #include <fstream>
 #include <string>
 #include "utility/constants.h"
-#include "fmt/core.h"
-#include "fmt/color.h"
+#include "utility/fmt/core.h"
+#include "utility/fmt/color.h"
 #include "utility/utility.h"
-#include "fmt/format.h"
+#include "utility/fmt/format.h"
 
 int main()
 {

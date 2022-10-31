@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <iostream>
 #include <fstream>
+#include "utility/constants.h"
 using namespace std;
 
 //this password input function has been copied from https://www.geeksforgeeks.org/taking-password-as-input-in-c
@@ -54,7 +55,7 @@ class Handler {
             this->auth = Auth();
         }
 
-        void handle() {
+        void handle(login_type login_type_t) {
             this->auth.login("username", "password");
         }
 
