@@ -6,15 +6,49 @@
 #include "utility/fmt/core.h"
 #include "utility/fmt/color.h"
 #include "utility/fmt/format.h"
+#include "auth/handler.h"
 #include <conio.h>
 
+void menu(string menu_display){
+    int choice;
+    system("CLS");
+    cout<<menu_display;
+    cin>>choice;
+    if (!cin){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nYou have wrong option in the previous menu selection!\n");
+        system("PAUSE");
+        menu(menu_display);
+    }
+    Handler handler;
+    login_type login_type_t;
+    if (choice==1){
+        login_type_t = admin;
+        handler.handle(login_type_t);
+    }else if (choice==2){
+        login_type_t = user;
+        handler.handle(login_type_t);
+    }else if (choice==3){
+        /* code */
+    }else if (choice==4){
+        system("PAUSE");
+        system("CLS");
+        exit(1);  
+    }else{
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nYou have wrong option in the previous menu selection!\n");
+        system("PAUSE");
+        menu(menu_display);
+    }
+    menu(menu_display);
+};
 
 int main()
 {
     cout<<flush;
     string file;
-    ifstream menu;
-    menu.open("database/menus/login_screen.txt");
+    ifstream menu_stream;
+    menu_stream.open("database/menus/login_screen.txt");
     if (!menu)
     {
         fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"Error! Some files are corrupted please reinstall the program again!\n");
@@ -23,46 +57,15 @@ int main()
     }
     string menu_display;
     bool display_error = false;
-    while (menu.eof()==0)
+    while (menu_stream.eof()==0)
     {   
         register string temp_menu_display;
-        getline(menu,temp_menu_display);
+        getline(menu_stream,temp_menu_display);
         menu_display+=(temp_menu_display+"\n");
     }
-    menu.close();
+    menu_stream.close();
     menu_display=fmt::format(menu_display,name);
-    int choice;
-   do{
-        system("CLS");
-        cout<<menu_display;
-        cin>>choice;
-        switch(choice)
-
-        {
-            case 1:
-
-        }
-        if (choice==1){
-            cout<<"hey";
-        }else if (choice==2){
-            cout<<"hey";
-        }else if (choice==3){
-            /* code */
-        }else if (choice==4){
-            system("PAUSE");
-            system("CLS");
-            exit(1);  
-        }else{
-            display_error = true;
-            system("CLS");
-        }
-        if (display_error){
-           fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nYou have wrong option in the previous menu selection!\n");
-           display_error=false;
-           system("PAUSE");
-        }
-    }while(choice<=4);
+    menu(menu_display);
     getch();
-
     return 0;
 }

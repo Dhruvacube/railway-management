@@ -19,4 +19,5 @@ class SHA256Hashing {
 bool Auth::login(string username, string password, login_type login_type_t) {
     SHA256Hashing hashing;
     string hashed_password = hashing.hash(password);
+    
 }

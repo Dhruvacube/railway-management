@@ -1,7 +1,7 @@
 #ifndef AUTH_H
 #define AUTH_H
 #include <string>
-#include "utility/constants.h"
+#include "../../utility/constants.h"
 
 class Auth {
     public:
