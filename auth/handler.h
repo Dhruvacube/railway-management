@@ -51,18 +51,6 @@ std::string takePasswdFromUser()
 	}
 }
 
-string * split(string s, char del){
-    stringstream ss(s);
-    string word;
-    string arr[20];
-    int n=0;
-    while (!ss.eof()) {
-        getline(ss, word, del);
-        arr[n] = word;
-        n+=1;
-    }
-}
-
 class Handler {
     Auth auth;
     public:
