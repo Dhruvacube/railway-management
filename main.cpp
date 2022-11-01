@@ -9,6 +9,22 @@
 #include "auth/handler.h"
 #include <conio.h>
 
+bool admin_checker(){
+    std::ifstream data;
+    int ph_no;
+    string username, password, first_name, last_name, address, email;
+    bool admin;
+    data.open("database/user/data.txt", std::ios::app);
+    while(data>>username>>password>>email>>ph_no>>first_name>>last_name>>address>>admin){
+        if (admin==true){
+            data.close();
+            return true;
+        };
+    };
+    data.close();
+    return false;
+};
+
 void menu(string menu_display){
     int choice;
     system("CLS");
@@ -46,6 +62,14 @@ void menu(string menu_display){
 int main()
 {
     cout<<flush;
+    if (!admin_checker()){
+        Handler handler;
+        login_type login_type_t;
+        login_type_t = admin;
+        fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue),"\nSince system has no admin account, so first an admin account will be created!\n");
+        system("PAUSE");
+        handler.handle(login_type_t);
+    }
     string file;
     ifstream menu_stream;
     menu_stream.open("database/menus/login_screen.txt");

@@ -50,11 +50,7 @@ std::string takePasswdFromUser()
 }
 
 class Handler {
-    Auth auth;
     public:
-        Handler(){
-            this->auth = Auth();
-        };
         bool user_login(string user_name, string pass_word, login_type login_type_t){
             ifstream data;
             data.open("../../database/user/data.txt");

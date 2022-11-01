@@ -1,11 +1,11 @@
 #ifndef AUTH_H
 #define AUTH_H
 #include <string>
-#include "../../utility/constants.h"
+using namespace std;
 
-class Auth {
+class SHA256Hashing {
     public:
-        bool login(string username, string password, login_type login_type_t);
+        string hash(string password);
 };
 
 #endif
