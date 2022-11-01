@@ -86,6 +86,7 @@ class Handler {
             return false;
         };
         void handle(login_type login_type_t) {
+            system("CLS");
             string username;
             string password;
             cout << "Enter the username: "<<endl;
