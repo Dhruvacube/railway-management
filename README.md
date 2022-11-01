@@ -24,3 +24,6 @@ $ if ($?) { g++ main.cpp -o main } ; if ($?) { .\main }
 
 ### Scopes
 There are many scopes of improvement in this project like cheaking of seats no, automatically assigning a seat no then view all the bookings and many more.
+
+### External Libraries
+Various external libraries have been used to ease the work, their licenses have been provided in their folder (where it is stored).
