@@ -1,8 +1,8 @@
-Welcome to {}
+Welcome to {} Admin Interface
 
-1. Admin Login
-2. Customer Login
-3. Customer User Creation
-4. Exit
+1. Display all the trains
+2. Book a train
+3. Cancel a train
+4. Logout
 
 Please enter a choice from 1-4 below:

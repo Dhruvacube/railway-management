@@ -8,7 +8,10 @@
 #include "utility/fmt/format.h"
 #include "auth/handler.h"
 #include "user/creation.h"
+#include "user/admin/admin.h"
+#include "user/customer/customer.h"
 #include <conio.h>
+using namespace std;
 
 bool admin_checker(){
     std::ifstream data;
@@ -43,9 +46,13 @@ void menu(string menu_display){
     if (choice==1){
         login_type_t = admin;
         handler.handle(login_type_t);
+        AdminMenu menu;
+        menu.admin_menu();
     }else if (choice==2){
         login_type_t = user;
         handler.handle(login_type_t);
+        CustomerMenu menu;
+        menu.customer_menu();
     }else if (choice==3){
         Account account;
         user_type user_type_t;

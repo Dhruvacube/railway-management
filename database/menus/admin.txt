@@ -6,4 +6,4 @@ Welcome to {} Admin Interface
 4. Delete a train's data
 5. Logout
 
-Please enter a choice from 1-6 below:
+Please enter a choice from 1-5 below:

@@ -3,10 +3,10 @@
 #include <map>
 #include <string>
 
-using namespace std;
+const std::string salt = "5213761a294a36227cd81dcc06d446b6"; //It could be anything, it will be helpful in decoding the password stored in the database
 
 //Name of the railway management app
-const string name = "Indian Rail Transport Corporation (IRCTC) Ltd.";
+std::string name = "Indian Rail Transport Corporation (IRCTC) Ltd";
 
 // seating layout in the trains
 const int ac1_seats = 24;
@@ -17,10 +17,10 @@ const int ac_chair_car = 72;
 const int sleeper_seats = 72;
 const int general_seats = 72;
 
-const int train_no_length = 5
+const int train_no_length = 5;
 
 //seat mapping with the seating class in a dict type of python
-std::map<string, int> seating = {
+std::map<std::string, int> seating = {
     { "1AC", ac1_seats },
     { "2AC", ac2_seats },
     { "3AC", ac3_seats },

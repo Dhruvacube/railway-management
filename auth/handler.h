@@ -93,19 +93,20 @@ class Handler {
                 if (this->user_login(username, password, login_type_t)) {
                     fmt::print(fmt::emphasis::bold ,"\nYou have successfully logged in as admin!\n");
                     system("PAUSE");
+                    return;
             } else {
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"\nYou have entered wrong credentials or something is wrong or the user doesn't exists!\n");
-                system("PAUSE");
             };
             } else if (login_type_t == login_type::user) {
                 if (this->user_login(username, password, login_type_t)) {
                     fmt::print(fmt::emphasis::bold ,"\nYou have successfully logged in as user!\n");
+                    return;
                 } else {
                     fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"\nYou have entered wrong credentials or something is wrong or the user doesn't exists!\n");
-                    system("PAUSE");
                 };
             };
             system("PAUSE");
+            this->handle(login_type_t);
         };
 };
 
