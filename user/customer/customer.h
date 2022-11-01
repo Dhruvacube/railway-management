@@ -90,9 +90,8 @@ class CustomerMenu{
         ofstream booking, trains;
         booking.open("../../database/trains/book.txt");
         trains.open("../../database/trains/data.txt");
-        int no, booking_no, seat_no;
+        int booking_no, seat_no;
         bool AC1, AC2,AC3,CC,AC,SL,GN;
-        string date;
         int n=0;
 
         cout<<"Enter the train no: ";
