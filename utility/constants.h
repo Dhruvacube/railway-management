@@ -17,6 +17,8 @@ const int ac_chair_car = 72;
 const int sleeper_seats = 72;
 const int general_seats = 72;
 
+const int train_no_length = 5
+
 //seat mapping with the seating class in a dict type of python
 std::map<string, int> seating = {
     { "1AC", ac1_seats },

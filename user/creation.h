@@ -221,6 +221,10 @@ class Account{
 
                 data << this->user_name << " " << password << " " << email << " " << phone_number << " " << first_name << " " << last_name << " " << address << " " << admin << std::endl;
                 data.close();
+                system("CLS");
+                cout << "Account created successfully with username as" << user_name << endl;
+                cout << "Please note down your username" << endl;
+                system("PAUSE");
                 return account;
         }catch(...){
             fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"There was some error, please try again!");

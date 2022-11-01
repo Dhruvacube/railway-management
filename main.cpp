@@ -7,6 +7,7 @@
 #include "utility/fmt/color.h"
 #include "utility/fmt/format.h"
 #include "auth/handler.h"
+#include "user/creation.h"
 #include <conio.h>
 
 bool admin_checker(){
@@ -46,7 +47,10 @@ void menu(string menu_display){
         login_type_t = user;
         handler.handle(login_type_t);
     }else if (choice==3){
-        /* code */
+        Account account;
+        user_type user_type_t;
+        user_type_t = normal_user;
+        account.create_account(user_type_t);
     }else if (choice==4){
         system("PAUSE");
         system("CLS");
@@ -63,12 +67,12 @@ int main()
 {
     cout<<flush;
     if (!admin_checker()){
-        Handler handler;
-        login_type login_type_t;
-        login_type_t = admin;
+        Account account;
+        user_type user_type_t;
+        user_type_t = admin_user;
         fmt::print(fmt::emphasis::bold | fg(fmt::color::sky_blue),"\nSince system has no admin account, so first an admin account will be created!\n");
         system("PAUSE");
-        handler.handle(login_type_t);
+        account.create_account(user_type_t);
     }
     string file;
     ifstream menu_stream;

@@ -1,0 +1,9 @@
+Welcome to {} Admin Interface
+
+1. New admin account creation
+2. New Train Data entry
+3. Update a train's data
+4. Delete a train's data
+5. Logout
+
+Please enter a choice from 1-6 below:
