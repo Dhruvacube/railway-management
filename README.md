@@ -16,3 +16,11 @@ Also it was complied and tested using g++ compiler by [mingw](https://sourceforg
 In order to start this project you first need to have [git](https://git-scm.com/downloads) and [g++](https://sourceforge.net/projects/mingw/) installed in you system.
 
 Then run the following commands.
+```shell
+$ https://github.com/The-4th-Hokage/railway-management.git
+$ cd railway-management
+$ if ($?) { g++ main.cpp -o main } ; if ($?) { .\main }
+```
+
+### Scopes
+There are many scopes of improvement in this project like cheaking of seats no, automatically assigning a seat no then view all the bookings and many more.
