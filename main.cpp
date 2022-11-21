@@ -73,6 +73,7 @@ void menu(string menu_display){
 int main()
 {
     cout<<flush;
+    system("CLS");
     if (!admin_checker()){
         Account account;
         user_type user_type_t;

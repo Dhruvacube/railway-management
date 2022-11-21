@@ -167,20 +167,20 @@ class Account{
                 std::cout << fmt::format("{} \nAccount Creation", name) << std::endl;
                 
                 string first_name, last_name;
-                cout<<"Enter your first name: "<<endl;
+                cout<<endl<<"Enter your first name: "<<endl;
                 cin>>first_name;
 
-                cout<<"Enter your last name: "<<endl;
+                cout<<endl<<"Enter your last name: "<<endl;
                 cin>>last_name;
                     
                 string password;
-                cout<< "Enter the password: "<<endl;
-                cin >> password;
+                cout<<endl<< "Enter the password: "<<endl;
+                password = HANDLER_H::takePasswdFromUser();
                 password = this->return_hash(password);
 
                 try{
                     string email;
-                    cout<< "Enter the email id: "<<endl;
+                    cout<<endl<< "Enter the email id: "<<endl;
                     cin >> email;
                     if (email_checker(email)){
                         account.email = email;
@@ -193,12 +193,12 @@ class Account{
                     fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                     std::cout<<std::endl;
                     system("PAUSE");
-                    void create_account(user_type user_type_t);
+                    create_account(user_type_t);
                 };
 
                 try{
                     int phone_number;
-                    cout<< "Enter the you phone no: "<<endl;
+                    cout<<endl<< "Enter the you phone no: "<<endl;
                     cin >> phone_number;
                     if (phone_no_length_checker(phone_number)){
                         account.phone_number = phone_number;
@@ -212,11 +212,11 @@ class Account{
                     fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                     std::cout<<std::endl;
                     system("PAUSE");
-                    void create_account(user_type user_type_t);
+                    create_account(user_type_t);
                 };
 
                 string address;
-                cout<<"Enter address: "<<endl;
+                cout<<endl<<"Enter address: "<<endl;
                 cin>>address;
 
                 data << this->user_name << " " << password << " " << email << " " << phone_number << " " << first_name << " " << last_name << " " << address << " " << admin << std::endl;
@@ -229,7 +229,7 @@ class Account{
         }catch(...){
             fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"There was some error, please try again!");
             system("PAUSE");
-            void create_account(user_type user_type_t);
+            create_account(user_type_t);
         }
         };
 };
