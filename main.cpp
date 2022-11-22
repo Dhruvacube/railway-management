@@ -20,7 +20,7 @@ bool admin_checker(){
     bool admin;
     data.open("database/user/data.txt", ios::binary | ios::in | ios::binary);
     string data_retrived;
-    while(getline (data, data_retrived)){
+    while(getline(data, data_retrived)){
         data>>username>>password>>email>>ph_no>>first_name>>last_name>>admin;
         if (admin==true){
             data.close();

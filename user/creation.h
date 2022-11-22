@@ -210,7 +210,7 @@ class Account{
                 cin >> phone_number;
                 if (phone_no_length_checker(phone_number)){
                     account.phone_number = phone_number;
-                    account_data<<phone_number;
+                    account_data<<to_string(phone_number);
                     account_data.flush();
                     account_data<<" ";
                     account_data.flush();

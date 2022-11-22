@@ -16,7 +16,7 @@ class CustomerMenu{
         cout << flush;
         string file;
         ifstream menu_stream;
-        menu_stream.open("../../database/menus/customer.txt");
+        menu_stream.open("database/menus/customer.txt");
         if (!menu_stream)
         {
             fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"Error! Some files are corrupted please reinstall the program again!\n");
@@ -124,7 +124,15 @@ class CustomerMenu{
         cout<<"Enter the seat type: ";
         cin>>seat_type;
 
-        booking << no << " " << booking_no << " " << seat_no << " " << date << " " << seat_type<<endl;
+        booking << to_string(no) + " ";
+        booking.flush();
+        booking << to_string(booking_no) +  " ";
+        booking.flush();
+        booking <<  to_string(seat_no) + " " ;
+        booking.flush();
+        booking << date + " ";
+        booking.flush();
+        booking << seat_type + "\n";
         booking.close();
     };
     void cancel(){
@@ -138,7 +146,8 @@ class CustomerMenu{
 
         ofstream booking;
         booking.open("database/trains/book.txt");
-
+        int n = 0;
+        // string dummy_data
         while(booking << train_no << booking_no << seat_no << date << seat_type){
             if(booking_no == booking_no){
                 fmt::print(fmt::emphasis::bold ,"Booking found!");
@@ -148,10 +157,12 @@ class CustomerMenu{
                 cout<<"Number of Seats: "<<seat_no<<endl<<endl;
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nBooking canceled!\n");
                 system("PAUSE");
-                return;
+                n+=1;
             };
         };
-        fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nNo booking with that booking id found!\n");
+        if(n){
+            fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"\nNo booking with that booking id found!\n");
+        }
         return;
     };
 };
