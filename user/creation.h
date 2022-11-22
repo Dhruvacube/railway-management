@@ -29,7 +29,6 @@ std::string gen_random(const int len) {
 class Account{
     private:
         std::string pass_word;
-        std::string address;
         bool admin;
         bool email_checker(string check){
             int at_count = 0;
@@ -65,7 +64,8 @@ class Account{
         int phone_number;
         std::string first_name;
         std::string last_name;
-        Account(std::string user_name, std::string pass_word, std::string email, int phone_number, std::string first_name, std::string last_name, std::string address, bool admin){
+        Account(std::string user_name, std::string pass_word, std::string email, int phone_number, std::string first_name, std::string last_name, bool admin){
+            std::cout<<flush;
             this->user_name = user_name;
             this->pass_word = pass_word;
             try{
@@ -77,9 +77,11 @@ class Account{
                 }
             }
             catch(const char* msg){
+                system("CLS");
                 std::cout<<std::endl;
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                 std::cout<<std::endl;
+                system("PAUSE");
             }
             try{
                 if (phone_no_length_checker(phone_number)){
@@ -90,16 +92,18 @@ class Account{
                 }
             }
             catch(const char* msg){
+                system("CLS");
                 std::cout<<std::endl;
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                 std::cout<<std::endl;
+                system("PAUSE");
             }
             this->first_name = first_name;
             this->last_name = last_name;
-            this->address = address;
             this->admin = admin;
         };
-        Account(std::string user_name, std::string email, int phone_number, std::string first_name, std::string last_name, std::string address, bool admin){
+        Account(std::string user_name, std::string email, int phone_number, std::string first_name, std::string last_name, bool admin){
+            std::cout<<flush;
             this->user_name = user_name;
             try{
                 if (email_checker(email)){
@@ -110,9 +114,11 @@ class Account{
                 }
             }
             catch(const char* msg){
+                system("CLS");
                 std::cout<<std::endl;
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                 std::cout<<std::endl;
+                system("PAUSE");
             }
             try{
                 if (phone_no_length_checker(phone_number)){
@@ -123,23 +129,24 @@ class Account{
                 }
             }
             catch(const char* msg){
+                system("CLS");
                 std::cout<<std::endl;
                 fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
                 std::cout<<std::endl;
+                system("PAUSE");
             }
             this->first_name = first_name;
             this->last_name = last_name;
-            this->address = address;
             this->admin = admin;
         };
         Account(){
+            std::cout<<flush;
             this->user_name = gen_random(5);
             this->pass_word = "";
             this->email = "";
             this->phone_number = 0;
             this->first_name = "";
             this->last_name = "";
-            this->address = "";
             this->admin = false;
         };
         void add_password(string password){
@@ -152,10 +159,10 @@ class Account{
         };
 
         Account create_account(user_type user_type_t){
+            std::cout<<flush;
             system("CLS");
             try{
-                std::ofstream data;
-                data.open("../../database/user/data.txt", std::ios::app);
+                ofstream account_data("database/user/data.txt", ios::out | ios::app | ios::binary);
                 Account account;
                 bool admin;
                 if (user_type_t == admin_user){
@@ -178,49 +185,51 @@ class Account{
                 password = HANDLER_H::takePasswdFromUser();
                 password = this->return_hash(password);
 
-                try{
-                    string email;
-                    cout<<endl<< "Enter the email id: "<<endl;
-                    cin >> email;
-                    if (email_checker(email)){
-                        account.email = email;
-                    }
-                    else{
-                        throw "Invalid email";
-                    }
-                }catch(const char* msg){
-                    std::cout<<std::endl;
-                    fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
-                    std::cout<<std::endl;
-                    system("PAUSE");
-                    create_account(user_type_t);
-                };
-
-                try{
-                    int phone_number;
-                    cout<<endl<< "Enter the you phone no: "<<endl;
-                    cin >> phone_number;
-                    if (phone_no_length_checker(phone_number)){
-                        account.phone_number = phone_number;
-                    }
-                    else{
-                        throw "Invalid phone number, It must be 10 digits";
-                    }
+                account_data<<this->user_name+ " " + password + " ";
+                account_data.flush();
+                
+                string email;
+                cout<<endl<< "Enter the email id: "<<endl;
+                cin >> email;
+                if (email_checker(email)){
+                    account.email = email;
+                    account_data<<email + " ";
+                    account_data.flush();
                 }
-                catch(const char* msg){
+                else{
+                    system("CLS");
                     std::cout<<std::endl;
-                    fmt::print(fmt::emphasis::bold | fg(fmt::color::red),msg);
+                    fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"Invalid Email");
                     std::cout<<std::endl;
                     system("PAUSE");
                     create_account(user_type_t);
                 };
 
-                string address;
-                cout<<endl<<"Enter address: "<<endl;
-                cin>>address;
+                int phone_number;
+                cout<<endl<< "Enter the you phone no: "<<endl;
+                cin >> phone_number;
+                if (phone_no_length_checker(phone_number)){
+                    account.phone_number = phone_number;
+                    account_data<<phone_number;
+                    account_data.flush();
+                    account_data<<" ";
+                    account_data.flush();
+                }
+                else{
+                    system("CLS");
+                    std::cout<<std::endl;
+                    fmt::print(fmt::emphasis::bold | fg(fmt::color::red),"Invalid phone number, It must be 10 digits");
+                    std::cout<<std::endl;
+                    system("PAUSE");
+                    create_account(user_type_t);
+                };
 
-                data << this->user_name << " " << password << " " << email << " " << phone_number << " " << first_name << " " << last_name << " " << address << " " << admin << std::endl;
-                data.close();
+                account_data<<first_name + " " + last_name + " ";
+                account_data.flush();
+                account_data<<admin;
+                account_data.flush();
+                account_data<<"\n";
+                account_data.close();
                 system("CLS");
                 cout << "Account created successfully with username as" << user_name << endl;
                 cout << "Please note down your username" << endl;

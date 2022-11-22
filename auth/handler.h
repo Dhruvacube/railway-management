@@ -54,10 +54,10 @@ class Handler {
         bool user_login(string user_name, string pass_word, login_type login_type_t){
             ifstream data;
             data.open("../../database/user/data.txt");
-            string name,address,emailid,username,password;
+            string name,emailid,username,password;
             int ph_no;
             bool admin;
-            while (data >> name >> ph_no >> address >> emailid >> username >> password >> admin) {
+            while (data >> name >> ph_no >> emailid >> username >> password >> admin) {
                 if (username == user_name && password == pass_word) {
                     if (login_type_t == login_type::admin) {
                         if (admin) {

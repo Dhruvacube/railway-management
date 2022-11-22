@@ -61,7 +61,7 @@ class CustomerMenu{
     void display_trains(){
         system("CLS");
         ofstream train;
-        train.open("../../database/trains/data.txt", ios::out | ios::trunc);
+        train.open("../../database/trains/data.txt");
         int train_no;
         string destination, departure, name;
         int AC1_coaches,AC2_coaches,AC3_coaches,CC_coaches,AC_coaches,SL_coaches,GN_coaches,kms;
@@ -88,8 +88,8 @@ class CustomerMenu{
         int no;
         system("CLS");
         ofstream booking, trains;
-        booking.open("../../database/trains/book.txt");
-        trains.open("../../database/trains/data.txt");
+        booking.open("database/trains/book.txt");
+        trains.open("database/trains/data.txt");
         int booking_no, seat_no;
         bool AC1, AC2,AC3,CC,AC,SL,GN;
         int n=0;
@@ -137,7 +137,7 @@ class CustomerMenu{
         int seat_no, train_no;
 
         ofstream booking;
-        booking.open("../../database/trains/book.txt");
+        booking.open("database/trains/book.txt");
 
         while(booking << train_no << booking_no << seat_no << date << seat_type){
             if(booking_no == booking_no){

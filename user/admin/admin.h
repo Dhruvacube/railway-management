@@ -29,7 +29,7 @@ class AdminMenu{
         cout<<flush;
         string file;
         ifstream menu_stream;
-        menu_stream.open("../../database/menus/admin.txt");
+        menu_stream.open("database/menus/admin.txt");
         if (!menu_stream)
         {
             fmt::print(fmt::emphasis::bold | fg(fmt::color::yellow),"Error! Some files are corrupted please reinstall the program again!\n");
@@ -79,7 +79,7 @@ class AdminMenu{
     void new_train(){
         system("CLS");
         ofstream train;
-        train.open("../../database/trains/data.txt", ios::app);
+        train.open("database/trains/data.txt", ios::out | ios::app);
         fmt::print(fmt::emphasis::bold, "\nNew train data entry\n");
         int train_no = gen_random_no(train_no_length);
         int train_no_down = train_no - 1;
@@ -119,8 +119,8 @@ class AdminMenu{
         cout<< "Enter the no of kms it would cover: " << endl;
         cin>>kms;
 
-        train << name << " " << train_no << " " << departure << " " << destination << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches <<endl;
-        train << name << " " << train_no_down << " " << destination << " " << departure << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches << endl;
+        train << name << " " << train_no << " " << departure << " " << destination << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches <<"\n";
+        train << name << " " << train_no_down << " " << destination << " " << departure << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches << "\n";
 
         train.close();
         system("CLS");
@@ -135,7 +135,7 @@ class AdminMenu{
         cout<< "Please enter the train number of which you want to update: "<<endl;
         cin>>no;
         ofstream train;
-        train.open("../../database/trains/data.txt", ios::out | ios::trunc);
+        train.open("database/trains/data.txt", ios::out | ios::trunc);
         string train_data ="";
         string destination, departure, name;
         bool concelled = false;
@@ -175,7 +175,7 @@ class AdminMenu{
                 cout<< "Enter the no of kms it would cover: " << endl;
                 cin>>kms;
                 train << train_data;
-                train << name << " " << train_no << " " << departure << " " << destination << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches << endl;
+                train << name << " " << train_no << " " << departure << " " << destination << " " << kms << " " << AC1_coaches << " " << AC2_coaches << " " << AC3_coaches << " " << CC_coaches << " " << AC_coaches << " " << SL_coaches << " " << GN_coaches << "\n";
                 train.close();
                 system("CLS");
                 cout << "Train data updated"<< endl;
@@ -196,7 +196,7 @@ class AdminMenu{
         cout<< "Please enter the train number of which you want to delete: "<<endl;
         cin>>no;
         ofstream train;
-        train.open("../../database/trains/data.txt", ios::out | ios::trunc);
+        train.open("database/trains/data.txt", ios::out | ios::trunc);
         string train_data ="";
         string destination, departure, name;
         bool concelled = false;

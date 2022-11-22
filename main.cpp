@@ -14,12 +14,14 @@
 using namespace std;
 
 bool admin_checker(){
-    std::ifstream data;
+    ifstream data;
     int ph_no;
-    string username, password, first_name, last_name, address, email;
+    string username, password, first_name, last_name, email;
     bool admin;
-    data.open("database/user/data.txt", std::ios::app);
-    while(data>>username>>password>>email>>ph_no>>first_name>>last_name>>address>>admin){
+    data.open("database/user/data.txt", ios::binary | ios::in | ios::binary);
+    string data_retrived;
+    while(getline (data, data_retrived)){
+        data>>username>>password>>email>>ph_no>>first_name>>last_name>>admin;
         if (admin==true){
             data.close();
             return true;
