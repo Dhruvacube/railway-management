@@ -19,7 +19,6 @@ int gen_random_no(const int len) {
     for (int i = 0; i < len; ++i) {
         tmp_s += alphanum[rand() % (sizeof(alphanum) - 1)];
     }
-    
     return stoi(tmp_s);
 }
 

@@ -65,12 +65,12 @@ class Handler {
                             return true;
                         } else {
                             data.close();
-                            // return false;
+                            return false;
                         }
                     } else if (login_type_t == login_type::user) {
                         if (admin) {
                             data.close();
-                            // return false;                            
+                            return false;                            
                         } else {
                             data.close();
                             return true;
@@ -79,8 +79,7 @@ class Handler {
                 };};
 
             data.close();
-            return true;
-            // return false;
+            return false;
         };
         void handle(login_type login_type_t) {
             system("CLS");
